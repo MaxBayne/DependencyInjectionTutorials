@@ -21,12 +21,9 @@ namespace DependencyInjection.Application
         //[Inject]
         //public IServices Services { get; set; }
 
-        public IServices _services=null;
-        public IServices Services
-        {
-            set => _services = value;
 
-        }
+        public IServices Services{ get; set; }
+        
 
 
         public App(int counter=0)
@@ -36,8 +33,8 @@ namespace DependencyInjection.Application
 
         public void Run()
         {
-            ++_counter;
-            _services.RunAsync();
+            Increment();
+            Services.RunAsync();
         }
 
         public void Increment()
@@ -50,7 +47,6 @@ namespace DependencyInjection.Application
             await Task.Run(() =>
             {
                 Console.WriteLine(_counter);
-                Increment();
             });
             
         }

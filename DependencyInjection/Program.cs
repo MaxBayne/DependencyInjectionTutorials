@@ -65,17 +65,20 @@ namespace DependencyInjection
             using (var scope = Container.BeginLifetimeScope())
             {
                 //Resolve
-                //var app = scope.Resolve<IApp>();
-                var config = scope.Resolve<IConfigService>();
+                var app = scope.Resolve<IApp>();
+
+
+
+                app.Run();
 
                 
-                config.Print();
-                config.Print();
-                config.Print();
 
-                //app.Run();
+
+
 
             }
+
+         
 
 
             Console.ReadLine();
@@ -94,8 +97,8 @@ namespace DependencyInjection
                 //builder.RegisterType<App>().AsSelf();
 
                 //Register Type of Class
-                builder.RegisterType<App>().As<IApp>().SingleInstance();
-                builder.RegisterType<Application.Services>().As<IServices>();
+                builder.RegisterType<App>().As<IApp>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies).SingleInstance();
+                builder.RegisterType<Application.Services>().As<IServices>().PropertiesAutowired();
 
                 //Register Type with its implemented Interfaces
                 //builder.RegisterType<App>().AsImplementedInterfaces().SingleInstance();
