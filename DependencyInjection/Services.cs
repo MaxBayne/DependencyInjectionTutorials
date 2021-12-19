@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using DependencyInjection.Services;
 
+// ReSharper disable once CheckNamespace
 namespace DependencyInjection.Application
 {
     public interface IServices
@@ -19,6 +21,7 @@ namespace DependencyInjection.Application
             _app.PrintNumber();
         }
 
+        public ISecurityService SecurityService { get; set; }
 
         public async Task RunAsync()
         {

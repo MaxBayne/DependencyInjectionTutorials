@@ -2,7 +2,12 @@
 
 namespace DependencyInjection.Services
 {
-    public class MigrationService: IMigrationService
+    public interface IMigrationService
+    {
+
+    }
+
+    public class MigrationService: IMigrationService,IAppService
     {
         
     }

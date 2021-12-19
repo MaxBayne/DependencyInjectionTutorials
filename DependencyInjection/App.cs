@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Ninject;
 
+//using Ninject;
+
+// ReSharper disable once CheckNamespace
 namespace DependencyInjection.Application
 {
     public interface IApp
@@ -21,7 +23,7 @@ namespace DependencyInjection.Application
         //[Inject]
         //public IServices Services { get; set; }
 
-
+        //Property Injection By Autofac
         public IServices Services{ get; set; }
         
 

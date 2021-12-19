@@ -14,7 +14,7 @@ namespace DependencyInjection.Services
         //[Inject]
         //public IApp app{ get; set; }
 
-        public IApp app { get; set; }
+        public IApp App { get; set; }
 
         public ConfigService()
         {
@@ -23,7 +23,7 @@ namespace DependencyInjection.Services
 
         public void Print()
         {
-            app.PrintNumber();
+            App.PrintNumber();
         }
     }
     
