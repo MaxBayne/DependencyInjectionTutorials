@@ -73,7 +73,7 @@ namespace DependencyInjection
 
 
             //Take Scope From Container
-            using (var scope = Container.BeginLifetimeScope())
+            using (var scope = Container.BeginLifetimeScope("scoped"))
             {
                 //Resolve
                 var app = scope.Resolve<IApp>();
@@ -96,7 +96,8 @@ namespace DependencyInjection
                 scope.Dispose();
             }
 
-         
+
+
 
 
             Console.ReadLine();
@@ -203,8 +204,14 @@ namespace DependencyInjection
 
                 //Scope For Instance
 
-                //Default Scope is [InstancePerDependency] mean every resolve will create new instance of component
-                builder.RegisterType<LogService>().As<ILogService>().InstancePerDependency();
+                //[InstancePerDependency] mean every resolve will create new instance of component , its default 
+                //builder.RegisterType<LogService>().As<ILogService>().InstancePerDependency();
+
+                //[InstancePerLifetimeScope] mean every resolve inside scope will be use one instance only , other scope cant access this shared over one scope
+                //builder.RegisterType<LogService>().As<ILogService>().InstancePerLifetimeScope();
+
+                //[InstancePerMatchingLifetimeScope] mean every resolve inside multi scope that use [scoped] tag will share only one instance over multi scopes
+                //builder.RegisterType<LogService>().As<ILogService>().InstancePerMatchingLifetimeScope("scoped");
 
             }
         }
