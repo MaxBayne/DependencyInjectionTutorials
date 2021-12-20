@@ -1,11 +1,14 @@
-﻿namespace DependencyInjection.Services
+﻿using System;
+using System.Threading.Tasks;
+
+namespace DependencyInjection.Services
 {
     public interface ILogService
     {
         string GetLogName();
     }
 
-    public class LogService:ILogService
+    public class LogService:ILogService, IDisposable,IAsyncDisposable
     {
         string _logName;
 
@@ -20,6 +23,14 @@
         }
 
 
-        
+        public async ValueTask DisposeAsync()
+        {
+            //Release Resources Async
+        }
+
+        public void Dispose()
+        {
+            //Release Resources
+        }
     }
 }
